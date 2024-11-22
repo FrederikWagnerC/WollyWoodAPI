@@ -1,34 +1,34 @@
 import express from 'express';
-import { GenreModel } from '../model/genre.model.js';
+import { CartlineModel } from '../model/cartline.model.js';
 
-export const GenreController = express.Router();
+export const CartlineController = express.Router();
 
-GenreController.get('/genres', async (req, res) => {
-    let genres = await GenreModel.getAllGenres();
-    res.send(genres);
+CartlineController.get('/cartlines', async (req, res) => {
+    let cartlines = await CartlineModel.getAllCartlines();
+    res.send(cartlines);
 });
 
-GenreController.get('/genres/:id([0-9]*)', async (req, res) => {
-    const data = await GenreModel.getGenreById(req.params.id);
+CartlineController.get('/cartlines/:id([0-9]*)', async (req, res) => {
+    const data = await CartlineModel.getCartlineById(req.params.id);
     console.log(data);
     res.send(data);
 });
 
-GenreController.post('/genres', async (req, res) => {
-    const data = await GenreModel.createGenre(req.body);
+CartlineController.post('/cartlines', async (req, res) => {
+    const data = await CartlineModel.createCartline(req.body);
     res.send(data);
     console.log(data.id);
     console.log(req.body);
 });
 
-GenreController.put('/genres', async (req, res) => {
-    const data = await GenreModel.updateGenre(req.body);
+CartlineController.put('/cartlines', async (req, res) => {
+    const data = await CartlineModel.updateCartline(req.body);
     res.send(data);
     console.log(req.body);
 });
 
-GenreController.delete('/genres', async (req, res) => {
-    const data = await GenreModel.deleteGenre(req.body);
+CartlineController.delete('/cartlines', async (req, res) => {
+    const data = await CartlineModel.deleteCartline(req.body);
     res.send(data);
     console.log(req.body);
 });
